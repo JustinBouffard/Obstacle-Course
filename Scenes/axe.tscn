@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c5d5nd6qxldja"]
+
+[ext_resource type="Script" uid="uid://dt3xt8hfpkpv4" path="res://Scripts/swinging_axe.gd" id="1_aowxy"]
+[ext_resource type="Script" uid="uid://do55u61mx6xtd" path="res://Scripts/respawn_object.gd" id="2_2q7ty"]
+[ext_resource type="Material" uid="uid://d1ygydcblivm1" path="res://Materials/brown.tres" id="2_6o4l1"]
+[ext_resource type="Material" uid="uid://dbiyawxmwqokm" path="res://Materials/red.tres" id="3_2q7ty"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2q7ty"]
+material = ExtResource("3_2q7ty")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aowxy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tvkbj"]
+material = ExtResource("2_6o4l1")
+
+[node name="Axe" type="AnimatableBody3D" unique_id=312592764]
+script = ExtResource("1_aowxy")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=288406389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.460699, 0)
+
+[node name="Blade" type="Area3D" parent="Pivot" unique_id=54988533]
+transform = Transform3D(0.3818761, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.460699, 0)
+script = ExtResource("2_2q7ty")
+
+[node name="Mesh" type="MeshInstance3D" parent="Pivot/Blade" unique_id=407931816]
+transform = Transform3D(33.04246, 0, 0, 0, 2.7653208, 0, 0, 0, 4.1181145, 0, -0.8230072, 0)
+mesh = SubResource("BoxMesh_2q7ty")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Blade" unique_id=289642380]
+transform = Transform3D(33.04246, 0, 0, 0, 2.7653208, 0, 0, 0, 4.1181145, 0, -0.8230072, 0)
+shape = SubResource("BoxShape3D_aowxy")
+
+[node name="Shaft" type="MeshInstance3D" parent="Pivot" unique_id=596394075]
+transform = Transform3D(1.9680322, 0, 0, 0, 14.090822, 0, 0, 0, 1, 0, -7.06318, 0)
+mesh = SubResource("BoxMesh_tvkbj")
